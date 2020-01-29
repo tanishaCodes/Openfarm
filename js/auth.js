@@ -49,5 +49,5 @@ $(".btn").on("click", function(event) {
   
 });
 
-window.open();
+//window.open();
 
