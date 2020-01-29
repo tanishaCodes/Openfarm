@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href=“https://fonts.googleapis.com/icon?family=Material+Icons” rel=“stylesheet”>
+   
 
 </head>
 
@@ -406,6 +407,30 @@
     </div>
   </div>
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCZx0yPBWmZBvRYQcOoMOd9M5-25XsUAqE",
+    authDomain: "openfarm-2296b.firebaseapp.com",
+    databaseURL: "https://openfarm-2296b.firebaseio.com",
+    projectId: "openfarm-2296b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  //make auth and firestore references
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  //update firestore settings
+  db.settings({ timestampsInSnapshots: true});
+</script>
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -414,7 +439,9 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="js/auth.js"></script>
   <script src="js/sb-admin-2.min.js"></script>
+  
 
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
@@ -422,6 +449,8 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+
+  
 
 </body>
 
