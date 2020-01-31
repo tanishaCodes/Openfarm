@@ -1,7 +1,43 @@
-$(function(zipConvert) {
-    // IMPORTANT: Fill in your client key
-    var clientKey = "1fMIfhXwBzpo5tcG7JqbF9zQ70cDKT498LKyySNrLqdAYIFdJ95GIIgPAacbcK7s";
+var APIKey = "58944daba347098d464f8de4da9b4020";
+var cityName = "Honolulu";
+
+// Here we are building the URL we need to query the database
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
+  "q="+cityName+",US&units=imperial&appid=" + APIKey;
+
+// Here we run our AJAX call to the OpenWeatherMap API
+$.ajax({
+  url: queryURL,
+  method: "GET"
+})
+  // We store all of the retrieved data inside of an object called "response"
+  .then(function(response) {
+
+    // Log the queryURL
+    console.log(queryURL);
+
+    // Log the resulting object
+    console.log(response);
+    //example on pulling specific parts of response
+    console.log(response.list[0].main.temp);
+
+    // Transfer content to HTML
+    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+    $(".wind").text("Wind Speed: " + response.wind.speed);
+    $(".humidity").text("Humidity: " + response.main.humidity);
+    $(".temp").text("Temperature (F) " + response.main.temp);
+
+    // Log the data in the console as well
+    console.log("Wind Speed: " + response.wind.speed);
+    console.log("Humidity: " + response.main.humidity);
+    console.log("Temperature (F): " + response.main.temp);
+
     
+  });
+
+    // IMPORTANT: Fill in your client key
+    var clientKey = "js-HcyB8lrvGFI2fZW0GZo95P5lLK0jc3YQRMmA4mL79E6PTgWTumaoYldUe5kKXqWU";
+    //var zipAPI = "js-glhiZj22D73XBkeorCrlxvKtBtRrM7BbvV5nWImgiwcYzby5eGfCOlf3969Fh5vu"
     var cache = {};
     var container = $("#example1");
     var errorDiv = container.find("div.text-error");
@@ -39,14 +75,17 @@ $(function(zipConvert) {
             else
             {
                 // Build url
-                var url = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zipcode + "/radians";
-                
+                //var ZIPurl = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zipcode + "/degrees";
+               var ZIPurl = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/"+zipcode+"/degrees"
                 // Make AJAX request
+                console.log(ZIPurl)
                 $.ajax({
-                    "url": url,
+                    url: ZIPurl,
+                    method: "GET",
                     "dataType": "json"
                 }).done(function(data) {
                     handleResp(data);
+                    console.log(data);
                     
                     // Store in cache
                     cache[zipcode] = data;
@@ -66,48 +105,3 @@ $(function(zipConvert) {
             }
         }
     }).trigger("change");
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    zipConvert();
-})
-
-var cityName = $("#exampleCity").val().trim();
-console.log("CITY NAME: " + cityName);
-var countryCode = data.response;
-
-// This is our API key
-var APIKey = "166a433c57516f51dfab1f7edaed8413";                                                           
-
-// Here we are building the URL we need to query the database
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKey;
-//5 day / 3 hour forecast data
-var hourlyURL = "https://api.openweathermap.org/data/2.5/forecast/hourly?q=" + cityName + "," + countryCode + "&units=imperial&appid=" + APIKey;
-
-// Here we run our AJAX call to the OpenWeatherMap API
-$.ajax({
-  url: queryURL,
-  method: "GET"
-})
-  // We store all of the retrieved data inside of an object called "response"
-  .then(function(response) {
-
-    // Log the queryURL
-    console.log(queryURL);
-
-    // Log the resulting object
-    console.log(response);
-
-    // Transfer content to HTML
-    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-    $(".wind").text("Wind Speed: " + response.wind.speed);
-    $(".humidity").text("Humidity: " + response.main.humidity);
-    $(".temp").text("Temperature (F) " + response.main.temp);
-
-    // Log the data in the console as well
-    console.log("Wind Speed: " + response.wind.speed);
-    console.log("Humidity: " + response.main.humidity);
-    console.log("Temperature (F): " + response.main.temp);
-  });
-
- 
