@@ -1,6 +1,9 @@
 // Initial Values
 var email = "";
 var password = "";
+var zip = "";
+var city = "";
+var state = "";
 
 // Capture Button Click to create user
 $(".btn").on("click", function(event) {
@@ -9,6 +12,10 @@ $(".btn").on("click", function(event) {
   // Grabbed values from text boxes
   email = $("#exampleInputEmail").val();
   password = $("#exampleInputPassword").val();
+  zip = $("#zipCode").val();
+  city = $("#city").val();
+  state = $("#state").val();
+
 
 
   //syntax to create users in firebase
