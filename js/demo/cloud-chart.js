@@ -3,7 +3,7 @@ var rainChart = document.getElementById('rainChart').getContext('2d');
 var rainWeekChart = new Chart(rainChart, {
   type: 'line',
   data: {
-    labels:dates,
+    labels:dowarray,
     datasets:[{
       label:'Clouds in the Sky',
       data:cloudy,

@@ -4,7 +4,7 @@ var humidityChart = document.getElementById('humidityChart').getContext('2d');
 var humidWeekChart = new Chart(humidityChart, {
   type: 'line',
   data: {
-    labels:dates,
+    labels:dowarray,
     datasets:[{
       label:'Humidity',
       data:humid,
