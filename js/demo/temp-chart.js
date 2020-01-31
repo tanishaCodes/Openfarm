@@ -3,7 +3,7 @@ var tempChart = document.getElementById('tempChart').getContext('2d');
 var tempWeekChart = new Chart(tempChart, {
   type: 'bar',
   data: {
-    labels:dates,
+    labels:dowarray,
     datasets:[{
       label:'Temperature',
       data:temps,

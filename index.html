@@ -35,27 +35,40 @@
     var humid = [];
     var windy = [];
     var cloudy = [];
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      .then(function (response) {
-        //console.log(queryURL);
-        var i = 0;
-        while (i < 40) {
-          var date = response.list[i].dt_txt;
-          var temp = response.list[i].main.temp;
-          var humidity = response.list[i].main.humidity;
-          var wind = response.list[i].wind.speed;
-          var clouds = response.list[i].clouds.all;
-          dates.push(date);
-          temps.push(temp);
-          humid.push(humidity);
-          windy.push(wind);
-          cloudy.push(clouds);
-          i = i + 8;
-        }
-      });
+    
+    var dowarray = [];
+    
+    var d = new Date();
+    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
+      var currDay = d.getDay();
+      var offset = currDay;
+      for (var i = 0; i < 5; i++) {
+        var dow = (i + offset) % 5;
+        dowarray.push(weekday[dow]);
+      }
+      console.log(dowarray);
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function (response) {
+            //console.log(queryURL);
+            var i = 0;
+            while (i < 40) {
+              var date = response.list[i].dt_txt;
+              var temp = response.list[i].main.temp;
+              var humidity = response.list[i].main.humidity;
+              var wind = response.list[i].wind.speed;
+              var clouds = response.list[i].clouds.all;
+              dates.push(date);
+              temps.push(temp);
+              humid.push(humidity);
+              windy.push(wind);
+              cloudy.push(clouds);
+              i = i + 8;
+            }
+          });
   </script>
 
 </head>
@@ -472,22 +485,22 @@
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
 
   <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCZx0yPBWmZBvRYQcOoMOd9M5-25XsUAqE",
-      authDomain: "openfarm-2296b.firebaseapp.com",
-      databaseURL: "https://openfarm-2296b.firebaseio.com",
-      projectId: "openfarm-2296b"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCZx0yPBWmZBvRYQcOoMOd9M5-25XsUAqE",
+          authDomain: "openfarm-2296b.firebaseapp.com",
+          databaseURL: "https://openfarm-2296b.firebaseio.com",
+          projectId: "openfarm-2296b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-    //make auth and firestore references
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-    //update firestore settings
-    db.settings({ timestampsInSnapshots: true });
+        //update firestore settings
+        db.settings({ timestampsInSnapshots: true });
   </script>
 
   <!-- Bootstrap core JavaScript-->

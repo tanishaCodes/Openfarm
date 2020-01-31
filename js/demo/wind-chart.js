@@ -3,7 +3,7 @@ var windChart = document.getElementById('windChart').getContext('2d');
 var windWeekChart = new Chart(windChart, {
   type: 'horizontalBar',
   data: {
-    labels:dates,
+    labels:dowarray,
     datasets:[{
       label:'Wind',
       data:windy,
