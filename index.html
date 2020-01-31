@@ -40,11 +40,14 @@
     
     var d = new Date();
     var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
-      var currDay = d.getDay();
-      var offset = currDay;
-      for (var i = 0; i < 5; i++) {
-        var dow = (i + offset) % 5;
+      //var currDay = d.getDay();
+      var offset = d.getDay();
+      for (var i = 0; i < weekday.length; i++) {
+        var dow = (i + offset) % weekday.length;
         dowarray.push(weekday[dow]);
+        if (dowarray.length == 5) {
+          break;
+        }
       }
       console.log(dowarray);
 
