@@ -1,12 +1,14 @@
+
 var humidityChart = document.getElementById('humidityChart').getContext('2d');
 
 var humidWeekChart = new Chart(humidityChart, {
   type: 'line',
   data: {
-    labels:['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels:dates,
     datasets:[{
       label:'Humidity',
-      data:[45, 35, 65, 48, 57, 40, 25],
+      data:humid,
+
       backgroundColor:'pink',
     }],
   },
@@ -16,7 +18,7 @@ var humidWeekChart = new Chart(humidityChart, {
       },
       layout:{
           padding:{
-              bottom:70,
+              bottom:100,
           }   
       },
       scales:{

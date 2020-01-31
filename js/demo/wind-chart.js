@@ -3,10 +3,10 @@ var windChart = document.getElementById('windChart').getContext('2d');
 var windWeekChart = new Chart(windChart, {
   type: 'horizontalBar',
   data: {
-    labels:['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels:dates,
     datasets:[{
       label:'Wind',
-      data:[15, 10, 12, 8, 16, 14, 18],
+      data:windy,
       backgroundColor:'orange',
     }],
   },
@@ -16,7 +16,7 @@ var windWeekChart = new Chart(windChart, {
       },
       layout:{
           padding:{
-              bottom:70,
+              bottom:100,
           }   
       },
       scales:{
@@ -33,7 +33,7 @@ var windWeekChart = new Chart(windChart, {
       },
       tooltips: {
         callbacks: {
-          label: (item) => `${item.yLabel} mph`,
+          label: (item) => `${item.xLabel} mph`,
         },
       },
   }

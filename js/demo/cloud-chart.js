@@ -3,11 +3,11 @@ var rainChart = document.getElementById('rainChart').getContext('2d');
 var rainWeekChart = new Chart(rainChart, {
   type: 'line',
   data: {
-    labels:['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels:dates,
     datasets:[{
-      label:'Precipitation',
-      data:[30, 20, 60, 90, 70, 20, 10],
-      backgroundColor:'teal',
+      label:'Clouds in the Sky',
+      data:cloudy,
+      backgroundColor:'#858796',
     }],
   },
   options:{
@@ -16,7 +16,7 @@ var rainWeekChart = new Chart(rainChart, {
       },
       layout:{
           padding:{
-              bottom:70,
+              bottom:100,
           }   
       },
       scales:{
@@ -26,14 +26,14 @@ var rainWeekChart = new Chart(rainChart, {
               },
               scaleLabel:{
                 display: true,
-                labelString: 'Precipitation in ˚%'
+                labelString: 'cloudy in ˚%'
 
             }
           }]
       },
       tooltips: {
         callbacks: {
-          label: (item) => `${item.yLabel} %`,
+          label: (item) => `${item.yLabel} % Cloudy`,
         },
       },
   }
