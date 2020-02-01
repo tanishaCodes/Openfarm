@@ -28,10 +28,9 @@ $("#registerBtn").on("click", function(event) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    window.location = 'login.html';
     // ...
   });
-
+  
     // Code for handling the push
     database.ref().push({
       fname: fname,
@@ -41,6 +40,7 @@ $("#registerBtn").on("click", function(event) {
       city: city,
       state: state
     });
+    window.location = 'login.html';
 
 });
 
@@ -66,11 +66,11 @@ $("#login").on("click", function(event) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        window.location = 'index.html';
         // ...
       });
     
-  
+      window.location = 'index.html';
+
 });
 
 // Firebase watcher .on("child_added"
@@ -83,14 +83,11 @@ database.ref().on("child_added", function(snapshot) {
   console.log(sv.zipCode);
   console.log(sv.city);
   console.log(sv.state);
-
+  $("#reportTitle").text("Weather Report For the City of "+ sv.city + " " +sv.state);
   // Change the HTML to reflect
-  $("#city").text(sv.city);
-  $("#state").text(sv.state);
+  
 
   // Handle the errors
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
-
-© 2020 GitHub, Inc.
