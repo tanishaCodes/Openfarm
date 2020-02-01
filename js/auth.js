@@ -1,6 +1,11 @@
+var database = firebase.database();
+
 // Initial Values
 var email = "";
 var password = "";
+var zipCode = "";
+var city = "";
+var state = "";
 
 // Capture Button Click to create user
 $(".btn").on("click", function(event) {
@@ -9,6 +14,9 @@ $(".btn").on("click", function(event) {
   // Grabbed values from text boxes
   email = $("#exampleInputEmail").val();
   password = $("#exampleInputPassword").val();
+  zipCode = $("#zipCode").val();
+  city = $("#city").val().trim();
+  state = $("#state").val().trim();
 
 
   //syntax to create users in firebase
@@ -18,6 +26,14 @@ $(".btn").on("click", function(event) {
     var errorMessage = error.message;
     // ...
   });
+
+    // Code for handling the push
+    database.ref().push({
+      email: email,
+      zipCode: zipCode,
+      city: city,
+      state: state
+    });
 
 });
 
@@ -49,5 +65,26 @@ $(".btn").on("click", function(event) {
   
 });
 
+// Firebase watcher .on("child_added"
+database.ref().on("child_added", function(snapshot) {
+  // storing the snapshot.val() in a variable for convenience
+  var sv = snapshot.val();
+
+  // Console.loging the last user's data
+  console.log(sv.email);
+  console.log(sv.zipCode);
+  console.log(sv.city);
+  console.log(sv.state);
+
+  // Change the HTML to reflect
+  $("#city").text(sv.city);
+  $("#state").text(sv.state);
+
+  // Handle the errors
+}, function(errorObject) {
+  console.log("Errors handled: " + errorObject.code);
+});
+
 //window.open();
+
 
