@@ -10,12 +10,12 @@ var city = "";
 var state = "";
 
 // Capture Button Click to create user
-$(".btn").on("click", function(event) {
+$("#registerBtn").on("click", function(event) {
   event.preventDefault();
 
   // Grabbed values from text boxes
   fname = $("#exampleFirstName").val();
-  lname = $("#examplelastName").val();
+  lname = $("#exampleLastName").val();
   email = $("#exampleInputEmail").val();
   password = $("#exampleInputPassword").val();
   zipCode = $("#zipCode").val();
@@ -45,7 +45,7 @@ $(".btn").on("click", function(event) {
 });
 
 // Capture Button Click and signout
-$(".btn").on("click", function(event) {
+$("#logout").on("click", function(event) {
     event.preventDefault();
   //signOut function
     firebase.auth().signOut().then(function() {
@@ -58,7 +58,7 @@ $(".btn").on("click", function(event) {
 });
 
 // Capture Button Click and sign in
-$(".btn").on("click", function(event) {
+$("#login").on("click", function(event) {
     event.preventDefault();
   
     //sign in function
