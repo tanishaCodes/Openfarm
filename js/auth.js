@@ -28,7 +28,7 @@ $("#registerBtn").on("click", function(event) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    window.location = 'login.html'
+    window.location = 'login.html';
     // ...
   });
 
@@ -66,7 +66,7 @@ $("#login").on("click", function(event) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        window.location = 'index.html'
+        window.location = 'index.html';
         // ...
       });
     
