@@ -8,15 +8,15 @@ To equip the small scale farming community with the right set of tools for succe
 
 OpenFarm is an open source application designed with small scale and urban farmers in mind. 
 
-OpenFarm has built-in intelligence to provide efficient predictions and alerts and feature displayed in an easy to use UX interface.
+OpenFarm has built-in intelligence to provide efficient predictions, alerts, and features displayed in an easy to use UX interface.
 
 ## How It Works
 
 1. User will register by providing their zip code and basic information to provide local weather data.
 
-2. Then, user will customize their dashboard with features of their choice.
+2. User will customize their dashboard with features of their choice.
 
-3. After customizing the dashboard, the user is able to set alerts for specific weather changes.
+3. After customizing the dashboard, user is able to set alerts for specific weather changes.
 
 ## Core Components & APIs Used
 
