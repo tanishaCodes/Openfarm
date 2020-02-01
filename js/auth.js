@@ -1,4 +1,5 @@
 var database = firebase.database();
+var myZIP;
 
 // Initial Values
 var fname = "";
@@ -28,9 +29,9 @@ $("#registerBtn").on("click", function(event) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    window.location = 'login.html';
     // ...
   });
+  window.location = 'login.html';
 
     // Code for handling the push
     database.ref().push({
@@ -66,11 +67,11 @@ $("#login").on("click", function(event) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        window.location = 'index.html';
         // ...
       });
     
-  
+      window.location = 'index.html';
+
 });
 
 // Firebase watcher .on("child_added"
@@ -78,16 +79,16 @@ database.ref().on("child_added", function(snapshot) {
   // storing the snapshot.val() in a variable for convenience
   var sv = snapshot.val();
 
+    myZIP = sv.zipCode;
+    
   // Console.loging the last user's data
-  console.log(sv.email);
-  console.log(sv.zipCode);
-  console.log(sv.city);
-  console.log(sv.state);
-
+  //console.log(sv.email);
+  //console.log(sv.zipCode);
+  console.log(myZIP);
+  //console.log(sv.state);
+  
   // Change the HTML to reflect
-  $("#city").text(sv.city);
-  $("#state").text(sv.state);
-
+  $("#reportTitle").text("Weather Report For the City of "+ sv.city + " "+ sv.state);
   // Handle the errors
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
