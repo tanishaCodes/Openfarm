@@ -1,6 +1,8 @@
 var database = firebase.database();
 
 // Initial Values
+var fname = "";
+var lname = "";
 var email = "";
 var password = "";
 var zipCode = "";
@@ -12,6 +14,8 @@ $(".btn").on("click", function(event) {
   event.preventDefault();
 
   // Grabbed values from text boxes
+  fname = $("#exampleFirstName").val();
+  lname = $("#examplelastName").val();
   email = $("#exampleInputEmail").val();
   password = $("#exampleInputPassword").val();
   zipCode = $("#zipCode").val();
@@ -24,11 +28,14 @@ $(".btn").on("click", function(event) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
+    window.location = 'login.html'
     // ...
   });
 
     // Code for handling the push
     database.ref().push({
+      fname: fname,
+      lname: lname,
       email: email,
       zipCode: zipCode,
       city: city,
@@ -59,6 +66,7 @@ $(".btn").on("click", function(event) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
+        window.location = 'index.html'
         // ...
       });
     
@@ -84,7 +92,5 @@ database.ref().on("child_added", function(snapshot) {
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
-
-//window.open();
 
 
