@@ -30,7 +30,7 @@ $("#registerBtn").on("click", function(event) {
     var errorMessage = error.message;
     // ...
   });
-  
+
     // Code for handling the push
     database.ref().push({
       fname: fname,
@@ -83,7 +83,7 @@ database.ref().on("child_added", function(snapshot) {
   console.log(sv.zipCode);
   console.log(sv.city);
   console.log(sv.state);
-  $("#reportTitle").text("Weather Report For the City of "+ sv.city + " " +sv.state);
+  //$("#reportTitle").text("Weather Report For the City of "+ sv.city + " " +sv.state);
   // Change the HTML to reflect
   
 

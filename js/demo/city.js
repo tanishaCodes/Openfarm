@@ -8,5 +8,5 @@ $.ajax({
 })
   .then(function(response) {
     var city = response.city.name;
-          $("#reportTitle").text("Weather Report For the City of "+city + "TX");
+          $("#reportTitle").text("Weather Report For the City of "+city + " TX");
   });
