@@ -37,3 +37,5 @@ ZIP Code API
  - More charts
  
  - Smart Watering
+ 
+ https://tanishahowell.github.io/Openfarm/
