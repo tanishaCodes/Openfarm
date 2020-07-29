@@ -38,4 +38,4 @@ ZIP Code API
  
  - Smart Watering
  
- https://tanishahowell.github.io/Openfarm/
+ https://tanishacodes.github.io/Openfarm/
